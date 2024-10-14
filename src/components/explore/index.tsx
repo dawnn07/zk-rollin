@@ -1,5 +1,10 @@
+"use client"
+import { useSignMessage } from 'wagmi'
 
 const Explore = () => {
+
+  const { signMessage } = useSignMessage()
+
   return (
     <section className="max-w-[1440px] mx-auto flex flex-col gap-8 justify-center items-center h-[566px] relative">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
@@ -15,9 +20,9 @@ const Explore = () => {
       </div>
       <div className="flex flex-col items-center gap-[14px] z-20">
         <h1 className="text-[#FFF] md:text-[48px] md:leading-[46px] text-2xl font-bold text-center">Discover the SOS NFT Platform <br /> - Where Every Artwork is a <br />Masterpiece!</h1>
-        <p className="md:text-[16px] md:leading-[25px] text-sm tracking-[0.3px] text-[#BFBFBF] text-center">Become part of an elite NFT community where you can buy, sell, and explore unique and <br className="md:flex hidden"/>valuable digital artworks.</p>
+        <p className="md:text-[16px] md:leading-[25px] text-sm tracking-[0.3px] text-[#BFBFBF] text-center">Become part of an elite NFT community where you can buy, sell, and explore unique and <br className="md:flex hidden" />valuable digital artworks.</p>
       </div>
-      <button className="px-6 py-[10px] bg-[#FFF] rounded-full z-20 transition-all hover:opacity-70">
+      <button onClick={() => signMessage({ message: 'hello world' })} className="px-6 py-[10px] bg-[#FFF] rounded-full z-20 transition-all hover:opacity-70">
         <span className="text-[18px] text-[#000000] leading-[20px] font-medium">Explore marketplace</span>
       </button>
     </section >
