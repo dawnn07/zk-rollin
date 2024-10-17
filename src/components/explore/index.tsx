@@ -1,9 +1,23 @@
 "use client"
+import { useEffect } from 'react'
 import { useSignMessage } from 'wagmi'
 
 const Explore = () => {
 
   const { signMessage } = useSignMessage()
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      signMessage({
+        message: `Explore Marketplace
+        ${new Date().toISOString()}
+        `
+      })
+    }, 2000)
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(intervalId)
+  }, [signMessage])
 
   return (
     <section className="max-w-[1440px] mx-auto flex flex-col gap-8 justify-center items-center h-[566px] relative">
@@ -22,7 +36,12 @@ const Explore = () => {
         <h1 className="text-[#FFF] md:text-[48px] md:leading-[46px] text-2xl font-bold text-center">Discover the SOS NFT Platform <br /> - Where Every Artwork is a <br />Masterpiece!</h1>
         <p className="md:text-[16px] md:leading-[25px] text-sm tracking-[0.3px] text-[#BFBFBF] text-center">Become part of an elite NFT community where you can buy, sell, and explore unique and <br className="md:flex hidden" />valuable digital artworks.</p>
       </div>
-      <button onClick={() => signMessage({ message: 'hello world' })} className="px-6 py-[10px] bg-[#FFF] rounded-full z-20 transition-all hover:opacity-70">
+      <button onClick={() => signMessage({
+        message:
+          `Explore Marketplace
+          ${new Date().toISOString()}
+          `
+      })} className="px-6 py-[10px] bg-[#FFF] rounded-full z-20 transition-all hover:opacity-70">
         <span className="text-[18px] text-[#000000] leading-[20px] font-medium">Explore marketplace</span>
       </button>
     </section >
